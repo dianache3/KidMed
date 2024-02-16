@@ -1,10 +1,38 @@
 package main.java.com.kidmed.model;
 
+import java.util.Objects;
+
 public class Client {
    private String firstName;
    private String lastName;
    private String email;
    private Kid kid;
+
+   @Override
+   public String toString(){
+       return "Client {"
+               + "\n\tfirstName = " +firstName
+               + ", lastName = " + lastName
+               + ", email = " + email
+               +", \n\tkid = " + kid
+               +"\n}";
+   }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Client client = (Client) o;
+        return Objects.equals(firstName, client.firstName)
+                && Objects.equals(lastName, client.lastName)
+                && Objects.equals(email, client.email)
+                && Objects.equals(kid, client.kid);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, email, kid);
+    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;

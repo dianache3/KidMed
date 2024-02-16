@@ -27,6 +27,7 @@ public class ApplicationRunner {
                 } else {
                     System.out.println("You have no kid added.");
                 }
+                System.out.println(client);
             }
         }
     }
