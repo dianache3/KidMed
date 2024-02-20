@@ -6,8 +6,14 @@ public class Kid {
     private String sex;
     private String name;
     private String surName;
-    private String age;
+    private int age;
     private String parent;
+
+    public Kid(){}
+
+    public Kid(int age){
+        this.age = age;
+    }
     @Override
     public String toString(){
         return "{name = " + name
@@ -20,7 +26,11 @@ public class Kid {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Kid kid = (Kid) o;
-        return Objects.equals(sex, kid.sex) && Objects.equals(name, kid.name) && Objects.equals(surName, kid.surName) && Objects.equals(age, kid.age) && Objects.equals(parent, kid.parent);
+        return Objects.equals(sex, kid.sex)
+                && Objects.equals(name, kid.name)
+                && Objects.equals(surName, kid.surName)
+                && Objects.equals(age, kid.age)
+                && Objects.equals(parent, kid.parent);
     }
 
     @Override
@@ -52,11 +62,11 @@ public class Kid {
         this.surName = surName;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 

@@ -17,7 +17,7 @@ public class KidService {
         kid.setSex(sex);
 
         System.out.print("Age: ");
-        kid.setAge(Main.SCANNER.nextLine());
+        kid.setAge( Main.SCANNER.nextByte());
 
         System.out.print("Name: ");
         kid.setName(Main.SCANNER.nextLine());
