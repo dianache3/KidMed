@@ -1,14 +1,18 @@
 package main.java.com.kidmed.model;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Kid {
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
     private String sex;
     private String name;
     private String surName;
     private int age;
     private String parent;
     private healthState healthState;
+    private final LocalDateTime registrationDate = LocalDateTime.now();
 
     public Kid(){}
 
@@ -21,7 +25,9 @@ public class Kid {
         return "{name = " + name
                 + ", surName = " + surName
                 + ", age = " + age
-                + ", healthState = " + healthState + "}";
+                + ", healthState = " + healthState
+                + ", registrationDate = " + registrationDate.format(FORMATTER)
+                + "}";
     }
 
     @Override
