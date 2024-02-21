@@ -3,14 +3,14 @@ package main.java.com.kidmed.component;
 import main.java.com.kidmed.Main;
 
 public class Authenticator {
-    public static boolean auth(){
+    public static boolean auth() {
         boolean accepted = false;
-        for (int i = 0; i<3; i++){
+        for (int i = 0; i<3; i++) {
             System.out.print("Password: ");
             String input = Main.SCANNER.nextLine();
 
             String password = "pass";
-            if (password.equals(input)){
+            if (password.equals(input)) {
                 accepted = true;
                 break;
             }else {

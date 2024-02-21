@@ -2,6 +2,8 @@ package main.java.com.kidmed.model;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Client {
@@ -9,17 +11,17 @@ public class Client {
    private String firstName;
    private String lastName;
    private String email;
-   private Kid kid;
+   private List<Kid> kids = new ArrayList<>();
    private final LocalDateTime firstEntry = LocalDateTime.now();
 
    @Override
-   public String toString(){
+   public String toString() {
        return "Client {"
                + "\n\tfirstName = " +firstName
                + ", lastName = " + lastName
                + ", email = " + email
                + ", firstEntry = " + firstEntry.format(FORMATTER)
-               +", \n\tkid = " + kid
+               +", \n\tkids = " + kids
                +"\n}";
    }
 
@@ -31,12 +33,12 @@ public class Client {
         return Objects.equals(firstName, client.firstName)
                 && Objects.equals(lastName, client.lastName)
                 && Objects.equals(email, client.email)
-                && Objects.equals(kid, client.kid);
+                && Objects.equals(kids, client.kids);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, email, kid);
+        return Objects.hash(firstName, lastName, email, kids);
     }
 
     public void setFirstName(String firstName) {
@@ -63,11 +65,13 @@ public class Client {
         return email;
     }
 
-    public void setKid(Kid kid) {
-        this.kid = kid;
+    public void setKid(List<Kid> kids) {
+        this.kids = kids;
     }
-
-    public Kid getKid() {
-        return kid;
+    public List<Kid> getKid() {
+        return kids;
+    }
+    public void addKid(Kid kid) {
+       kids.add(kid);
     }
 }

@@ -15,20 +15,32 @@ public class ApplicationRunner {
             Client client = clientService.registerNewClient();
 
             if (client != null) {
-                System.out.println("Do you want to add a kid? (yes/no)");
-                String answer = Main.SCANNER.nextLine();
-
-                if (answer.equals("yes")) {
-                    System.out.println("Adding a new kid.");
-                    Kid kid = kidService.registerNewKid();
-                    client.setKid(kid);
-                    kid.setParent(client.getFirstName() + " " + client.getLastName());
-                    System.out.println("Kid has been added.");
-                } else {
-                    System.out.println("You have no kid added.");
-                }
+                registerKids(client);
                 System.out.println(client);
             }
+        }
+    }
+    private void registerKids (Client client) {
+        boolean continueAddKids = true;
+        while (continueAddKids) {
+            addKid(client);
+
+            System.out.println("Do you want to add more kids for the current client? (y/n)");
+            String answer = Main.SCANNER.nextLine();
+
+            if("n".equals(answer)) {
+                continueAddKids = false;
+            }
+        }
+    }
+    private void addKid(Client client) {
+        System.out.println("Adding a new kid.");
+
+            Kid kid = kidService.registerNewKid();
+        if (kid != null) {
+            client.addKid(kid);
+            kid.setParent(client.getFirstName() + " " + client.getLastName());
+            System.out.println("Kid has been added.");
         }
     }
 }

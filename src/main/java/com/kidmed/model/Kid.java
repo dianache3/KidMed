@@ -8,7 +8,6 @@ public class Kid {
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
     private String sex;
     private String name;
-    private String surName;
     private int age;
     private String parent;
     private healthState healthState;
@@ -23,7 +22,6 @@ public class Kid {
     @Override
     public String toString(){
         return "{name = " + name
-                + ", surName = " + surName
                 + ", age = " + age
                 + ", healthState = " + healthState
                 + ", registrationDate = " + registrationDate.format(FORMATTER)
@@ -37,7 +35,6 @@ public class Kid {
         Kid kid = (Kid) o;
         return Objects.equals(sex, kid.sex)
                 && Objects.equals(name, kid.name)
-                && Objects.equals(surName, kid.surName)
                 && Objects.equals(age, kid.age)
                 && Objects.equals(parent, kid.parent)
                 && Objects.equals(healthState,kid.healthState);
@@ -45,19 +42,19 @@ public class Kid {
 
     @Override
     public int hashCode() {
-        return Objects.hash(sex, name, surName, age, parent, healthState);
+        return Objects.hash(sex, name, age, parent, healthState);
     }
 
     public Kid(Kid.healthState healthState) {
         this.healthState = healthState;
     }
-    public enum healthState{
+    public enum healthState {
         healthy(1),
         sick(2),
         unknown(0)
         ;
         private final int value;
-        healthState(int value){
+        healthState(int value) {
             this.value = value;
         }
         public int getValue() {
@@ -79,14 +76,6 @@ public class Kid {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getSurName() {
-        return surName;
-    }
-
-    public void setSurName(String surName) {
-        this.surName = surName;
     }
 
     public int getAge() {
