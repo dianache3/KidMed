@@ -8,17 +8,20 @@ public class Kid {
     private String surName;
     private int age;
     private String parent;
+    private healthState healthState;
 
     public Kid(){}
 
     public Kid(int age){
         this.age = age;
     }
+
     @Override
     public String toString(){
         return "{name = " + name
                 + ", surName = " + surName
-                + ", age = " + age + "}";
+                + ", age = " + age
+                + ", healthState = " + healthState + "}";
     }
 
     @Override
@@ -30,12 +33,30 @@ public class Kid {
                 && Objects.equals(name, kid.name)
                 && Objects.equals(surName, kid.surName)
                 && Objects.equals(age, kid.age)
-                && Objects.equals(parent, kid.parent);
+                && Objects.equals(parent, kid.parent)
+                && Objects.equals(healthState,kid.healthState);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(sex, name, surName, age, parent);
+        return Objects.hash(sex, name, surName, age, parent, healthState);
+    }
+
+    public Kid(Kid.healthState healthState) {
+        this.healthState = healthState;
+    }
+    public enum healthState{
+        healthy(1),
+        sick(2),
+        unknown(0)
+        ;
+        private final int value;
+        healthState(int value){
+            this.value = value;
+        }
+        public int getValue() {
+            return value;
+        }
     }
 
     public String getSex() {
@@ -76,5 +97,13 @@ public class Kid {
 
     public void setParent(String parent) {
         this.parent = parent;
+    }
+
+    public healthState getHealthState() {
+        return healthState;
+    }
+
+    public void setHealthState(healthState healthState) {
+        this.healthState = healthState;
     }
 }
