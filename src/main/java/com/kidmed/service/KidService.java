@@ -24,9 +24,17 @@ public class KidService {
         kid.setName(Main.SCANNER.nextLine());
 
         System.out.print("Health state (healthy/sick): ");
-        String healthState = Main.SCANNER.nextLine();
-        kid.setHealthState(Kid.healthState.valueOf(healthState));
+        Kid.healthState healthState;
+        String healthStateInput = Main.SCANNER.nextLine();
 
+        try {
+            healthState = Kid.healthState.valueOf(healthStateInput);
+        } catch (IllegalArgumentException e){
+            healthState = Kid.healthState.unknown;
+            System.out.println("Unable to parse value '" + healthStateInput +
+                    "'. Using default value: " + Kid.healthState.unknown);
+        }
+        kid.setHealthState(healthState);
         return kid;
     }
 }

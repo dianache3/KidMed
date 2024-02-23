@@ -34,11 +34,20 @@ public class ClientService {
         client.setLastName(Main.SCANNER.nextLine());
 
         System.out.print("Location: ");
-        String location = Main.SCANNER.nextLine();
-        client.setLocation(Client.Location.valueOf(location));
+        Client.Location location;
+        String locationInput = Main.SCANNER.nextLine();
 
-        return client;
-    }
+        try {
+            location = Client.Location.valueOf(locationInput);
+        } catch (IllegalArgumentException e) {
+            location = Client.Location.UNKNOWN;
+            System.out.println("Unable to parse value '" + locationInput
+                    + "'. Using default value: " + Client.Location.UNKNOWN);
+        }
+            client.setLocation(location);
+            return client;
+        }
+
 
     private static boolean isEmailValid(String email) {
         String EMAIL_PATTERN = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
