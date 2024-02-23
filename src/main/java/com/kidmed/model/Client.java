@@ -11,6 +11,7 @@ public class Client {
    private String firstName;
    private String lastName;
    private String email;
+   private Location location;
    private List<Kid> kids = new ArrayList<>();
    private final LocalDateTime firstEntry = LocalDateTime.now();
 
@@ -21,6 +22,7 @@ public class Client {
                + ", lastName = " + lastName
                + ", email = " + email
                + ", firstEntry = " + firstEntry.format(FORMATTER)
+               + ", location = " + location
                +", \n\tkids = " + kids
                +"\n}";
    }
@@ -65,13 +67,25 @@ public class Client {
         return email;
     }
 
-    public void setKid(List<Kid> kids) {
+    public void setKids(List<Kid> kids) {
         this.kids = kids;
     }
-    public List<Kid> getKid() {
+    public List<Kid> getKids() {
         return kids;
     }
     public void addKid(Kid kid) {
        kids.add(kid);
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public enum Location {
+       KYIV, LVIV, ODESA;
     }
 }
