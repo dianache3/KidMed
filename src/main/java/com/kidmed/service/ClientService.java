@@ -3,11 +3,12 @@ package main.java.com.kidmed.service;
 import main.java.com.kidmed.Main;
 import main.java.com.kidmed.model.Client;
 
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ClientService {
-    public Client registerNewClient() {
+    public Optional<Client> registerNewClient() {
         Client client = null;
 
         System.out.println("Please provide client details.");
@@ -21,7 +22,7 @@ public class ClientService {
         }else{
             System.out.println("Provided email is invalid.");
         }
-        return client;
+        return Optional.ofNullable(client);
     }
     private static Client buildClient(String email) {
         Client client = new Client();
